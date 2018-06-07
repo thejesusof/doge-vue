@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <breeds></breeds>
+    <header>
+      <router-link to="/">Главная</router-link>
+      <router-link to="/favourites">Избранное</router-link>
+      <select-breed></select-breed>
+    </header>
+    <router-view/>
   </div>
 </template>
 
 <script>
+import SelectBreed from './components/SelectBreed'
 import Breeds from './components/Breeds'
 
 export default {
   name: 'App',
   components: {
+    SelectBreed,
     Breeds
   },
   beforeCreate () {

@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Breeds from '@/components/Breeds'
+import Favourites from '@/components/Favourites'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // }
+    {
+      path: '/',
+      name: 'Breeds',
+      component: Breeds
+    },
+    {
+      path: '/favourites',
+      name: 'Favourites',
+      component: Favourites
+    }
   ]
 })
