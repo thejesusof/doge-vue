@@ -8,7 +8,7 @@ const store = new Vuex.Store({
   state: {
     url: 'https://dog.ceo/api',
     breeds: [],
-    selectedBreeds: []
+    selectedBreedImgs: []
   },
   actions: {
     getBreeds () {
@@ -30,9 +30,9 @@ const store = new Vuex.Store({
         console.log(error)
       })
     },
-    getSelectedBreed (breed) {
-      axios.get(`${this.url}/breed/${breed}/images`).then(response => {
-        store.state.selectedBreeds = response.data.message
+    getSelectedBreed (name, breed) {
+      axios.get(`${store.state.url}/breed/${breed}/images`).then(response => {
+        store.state.selectedBreedImgs = response.data.message
       }).catch(error => {
         console.log(error)
       })
