@@ -2,23 +2,29 @@
   <section class="selected-breed">
     <div class="selected-breed" v-for="(breed, index) in selectedBreeds" :key="index">
       <img v-bind:src="breed" alt="selected breed">
+      <fav v-bind:img="breed"></fav>
     </div>
   </section>
 </template>
 
 <script>
+import Fav from '@/components/Fav'
+
 export default {
-  name: 'SelectBreed',
+  name: 'SelectedBreed',
+  components: {
+    Fav
+  },
   computed: {
     selectedBreeds () {
       return this.$store.state.selectedBreedImgs
     }
-  },
-  methods: {
-
   }
 }
 </script>
 
 <style>
+.selected-breed {
+  position: relative;
+}
 </style>

@@ -11,13 +11,11 @@
 
 <script>
 import SelectBreed from './components/SelectBreed'
-import Breeds from './components/Breeds'
 
 export default {
   name: 'App',
   components: {
-    SelectBreed,
-    Breeds
+    SelectBreed
   },
   beforeCreate () {
     this.$store.dispatch('getBreeds')

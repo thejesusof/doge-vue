@@ -1,6 +1,6 @@
 <template>
   <select v-on:change="getSelectedBreed($event.target.value)">
-    <option>Gimme doge!</option>
+    <option value="/">Gimme doge!</option>
     <option v-for="(breed, index) in allBreeds" :key="index" :value="breed.name"> {{ breed.name }} </option>
   </select>
 </template>
@@ -15,8 +15,12 @@ export default {
   },
   methods: {
     getSelectedBreed (breed) {
+      if (breed === '/') {
+        this.$router.push('/')
+        return
+      }
       this.$store.dispatch('getSelectedBreed', breed)
-      this.$router.push('/selected-breed')
+      this.$router.push({ path: `/${breed}` })
     }
   }
 }

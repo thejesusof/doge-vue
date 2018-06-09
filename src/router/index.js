@@ -14,14 +14,14 @@ export default new Router({
       component: Breeds
     },
     {
-      path: '/selected-breed',
-      name: 'SelectedBreed',
-      component: SelectedBreed
-    },
-    {
       path: '/favourites',
       name: 'Favourites',
       component: Favourites
+    },
+    {
+      path: '/:name',
+      name: 'SelectedBreed',
+      component: SelectedBreed
     }
   ]
 })
