@@ -7,6 +7,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     url: 'https://dog.ceo/api',
+    dogsPerPage: 20,
     breeds: [],
     selectedBreedImgs: [],
     favDogs: []
@@ -43,10 +44,7 @@ const store = new Vuex.Store({
     },
     unFavDog (name, dog) {
       let index = store.state.favDogs.indexOf(dog)
-      console.log(index)
-      console.log(store.state.favDogs)
       store.state.favDogs.splice(index, 1)
-      console.log(store.state.favDogs)
     }
   }
 })

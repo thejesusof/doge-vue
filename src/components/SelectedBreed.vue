@@ -1,6 +1,6 @@
 <template>
   <section class="selected-breed">
-    <div class="selected-breed" v-for="(breed, index) in selectedBreeds" :key="index">
+    <div class="doggy" v-for="(breed, index) in selectedBreeds" :key="index">
       <img v-bind:src="breed" alt="selected breed">
       <fav v-bind:img="breed"></fav>
     </div>
@@ -19,12 +19,15 @@ export default {
     selectedBreeds () {
       return this.$store.state.selectedBreedImgs
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('getSelectedBreed', this.$route.params.name)
   }
 }
 </script>
 
 <style>
-.selected-breed {
+.doggy {
   position: relative;
 }
 </style>

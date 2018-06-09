@@ -1,4 +1,6 @@
-# vue-test
+# doge-vue
+
+![DOGE-VUE](https://img.devrant.com/devrant/rant/r_565529_WRQcK.jpg)
 
 > A Vue.js project
 
