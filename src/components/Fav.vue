@@ -19,6 +19,13 @@ export default {
         this.$store.dispatch('unFavDog', img)
       }
     }
+  },
+  watch: {
+    favDogs: {
+      handler () {
+        this.$store.dispatch('setLocalStorage')
+      }
+    }
   }
 }
 </script>

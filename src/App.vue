@@ -19,6 +19,7 @@ export default {
   },
   beforeCreate () {
     this.$store.dispatch('getBreeds')
+    this.$store.dispatch('getLocalStorage')
   }
 }
 </script>

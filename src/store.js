@@ -13,17 +13,17 @@ const store = new Vuex.Store({
     favDogs: []
   },
   actions: {
-    getBreeds () {
-      axios.get(`${store.state.url}/breeds/list`).then(response => {
+    getBreeds ({ state }) {
+      axios.get(`${state.url}/breeds/list`).then(response => {
         const breeds = response.data.message
         breeds.forEach((breed) => {
           let breedData = {
             name: breed,
             img: null
           }
-          axios.get(`${store.state.url}/breed/${breed}/images/random`).then(image => {
+          axios.get(`${state.url}/breed/${breed}/images/random`).then(image => {
             breedData.img = image.data.message
-            store.state.breeds.push(breedData)
+            state.breeds.push(breedData)
           }).catch(imageError => {
             console.log(imageError)
           })
@@ -45,6 +45,15 @@ const store = new Vuex.Store({
     unFavDog (name, dog) {
       let index = store.state.favDogs.indexOf(dog)
       store.state.favDogs.splice(index, 1)
+    },
+    getLocalStorage ({ state }) {
+      let storage = localStorage.getItem('favs')
+      if (storage) {
+        state.favDogs = JSON.parse(storage)
+      }
+    },
+    setLocalStorage ({ state }) {
+      localStorage.setItem('favs', JSON.stringify(state.favDogs))
     }
   }
 })
