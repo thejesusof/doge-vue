@@ -1,5 +1,5 @@
 <template>
-  <section class="selected-breed">
+  <section class="breeds">
     <div class="doggy" v-for="(breed, index) in loadedBreeds" :key="index">
       <img v-bind:src="breed" alt="selected breed">
       <fav v-bind:img="breed"></fav>
@@ -61,10 +61,24 @@ export default {
 </script>
 
 <style>
-.selected-breed {
+.breeds {
   width: 100%;
+  line-height: 0;
+  -webkit-column-count: 4;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    4;
+  -moz-column-gap:      0px;
+  column-count:         4;
+  column-gap:           0px;
 }
 .doggy {
+  width: 100%;
+  overflow: hidden;
   position: relative;
+}
+.doggy img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 </style>

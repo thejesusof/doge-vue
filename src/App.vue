@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <router-link to="/"> Main </router-link>
-      <router-link to="/favourites"> Favs </router-link>
+      <router-link to="/favourites"> Favorites ♥ </router-link>
       <select-breed></select-breed>
     </header>
     <router-view/>

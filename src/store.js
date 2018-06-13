@@ -44,6 +44,7 @@ const store = new Vuex.Store({
     unFavDog (name, dog) {
       let index = store.state.favDogs.indexOf(dog)
       store.state.favDogs.splice(index, 1)
+      localStorage.setItem('favs', JSON.stringify(store.state.favDogs))
     },
     getLocalStorage ({ state }) {
       let storage = localStorage.getItem('favs')

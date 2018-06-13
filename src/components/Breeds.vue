@@ -1,6 +1,6 @@
 <template>
   <section class="breeds">
-    <div class="breed" v-for="(breed, index) in loadedBreeds" :key="index">
+    <div class="doggy" v-for="(breed, index) in loadedBreeds" :key="index">
       <img v-bind:src="breed.img" alt="breed">
     </div>
   </section>
@@ -54,13 +54,21 @@ export default {
 <style>
 .breeds {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  line-height: 0;
+  -webkit-column-count: 4;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    4;
+  -moz-column-gap:      0px;
+  column-count:         4;
+  column-gap:           0px;
 }
-.breed {
-  width: 25%;
+.doggy {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
-.breed img {
+.doggy img {
+  display: block;
   width: 100%;
   height: auto;
 }
