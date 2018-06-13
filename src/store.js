@@ -7,7 +7,6 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     url: 'https://dog.ceo/api',
-    dogsPerPage: 20,
     breeds: [],
     selectedBreedImgs: [],
     favDogs: []

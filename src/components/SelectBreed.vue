@@ -27,4 +27,16 @@ export default {
 </script>
 
 <style>
+select {
+  outline: none;
+  padding: 6px 15px;
+  color: #313131;
+  font-size: 16px;
+  border-radius: 3px;
+  border: none;
+  box-shadow: none;
+  background: #f9fafc url("http://i62.tinypic.com/15xvbd5.png") no-repeat;
+  background-position: 95% 0;
+  -webkit-appearance: none;
+}
 </style>

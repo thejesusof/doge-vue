@@ -21,10 +21,8 @@ export default {
     }
   },
   watch: {
-    favDogs: {
-      handler () {
-        this.$store.dispatch('setLocalStorage')
-      }
+    favDogs: function () {
+      this.$store.dispatch('setLocalStorage')
     }
   }
 }
