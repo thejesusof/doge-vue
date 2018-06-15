@@ -5,7 +5,9 @@
       <router-link to="/favourites"> Favorites ♥ </router-link>
       <select-breed></select-breed>
     </header>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -44,6 +46,34 @@ a {
   color: #f7d0cb;
   text-transform: uppercase;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 30px;
+}
+.breeds {
+  width: 100%;
+  line-height: 0;
+  -webkit-column-count: 4;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    4;
+  -moz-column-gap:      0px;
+  column-count:         4;
+  column-gap:           0px;
+}
+.doggy {
+  width: 100%;
+  margin: 5px;
+  margin-top: 0;
+  overflow: hidden;
+  position: relative;
+}
+.doggy img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

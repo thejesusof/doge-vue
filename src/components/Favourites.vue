@@ -1,9 +1,13 @@
 <template>
   <section class="breeds">
-    <div v-for="(breed, index) in favDogs" :key="index" class="doggy">
-      <img v-bind:src="breed" alt="favourite breed">
-      <fav v-bind:img="breed"></fav>
-    </div>
+    <transition-group name="dogs">
+      <div v-for="(breed, index) in loadedBreeds" :key="index" class="doggy">
+        <div class="content">
+          <img v-bind:src="breed" alt="favourite breed">
+          <fav v-bind:img="breed"></fav>
+        </div>
+      </div>
+    </transition-group>
   </section>
 </template>
 
@@ -15,33 +19,54 @@ export default {
   components: {
     Fav
   },
+  data () {
+    return {
+      dogsPerPage: 20,
+      fav: Fav.isFav,
+      bottom: false
+    }
+  },
   computed: {
     favDogs () {
       return this.$store.state.favDogs
+    },
+    loadedBreeds () {
+      return this.favDogs.slice(0, this.dogsPerPage)
+    }
+  },
+  methods: {
+    showMore () {
+      this.dogsPerPage = this.dogsPerPage + 20
+      this.loadedBreeds.slice(0, this.dogsPerPage)
+    },
+    isBottomVisible () {
+      let scrollY = window.scrollY
+      let visible = document.documentElement.clientHeight
+      let pageHeight = document.documentElement.scrollHeight
+      let bottomOfPage = visible + scrollY >= pageHeight
+      return bottomOfPage || pageHeight < visible
+    }
+  },
+  created () {
+    window.addEventListener('scroll', () => {
+      this.bottom = this.isBottomVisible()
+    })
+  },
+  watch: {
+    bottom (bottom) {
+      if (bottom) {
+        this.showMore()
+      }
     }
   }
 }
 </script>
 
 <style>
-.breeds {
-  width: 100%;
-  line-height: 0;
-  -webkit-column-count: 4;
-  -webkit-column-gap:   0px;
-  -moz-column-count:    4;
-  -moz-column-gap:      0px;
-  column-count:         4;
-  column-gap:           0px;
+.dogs-enter-active, .dogs-leave-active {
+  transition: opacity 0.5s;
 }
-.doggy {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.doggy img {
-  display: block;
-  width: 100%;
-  height: auto;
+.dogs-enter, .dogs-leave-to {
+  opacity: 0;
 }
 </style>

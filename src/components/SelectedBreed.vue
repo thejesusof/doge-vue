@@ -1,9 +1,11 @@
 <template>
   <section class="breeds">
-    <div class="doggy" v-for="(breed, index) in loadedBreeds" :key="index">
-      <img v-bind:src="breed" alt="selected breed">
-      <fav v-bind:img="breed"></fav>
-    </div>
+    <transition-group name="dogs">
+      <div class="doggy" v-for="(breed, index) in loadedBreeds" :key="index">
+        <img v-bind:src="breed" alt="selected breed">
+        <fav v-bind:img="breed"></fav>
+      </div>
+    </transition-group>
   </section>
 </template>
 
@@ -61,24 +63,10 @@ export default {
 </script>
 
 <style>
-.breeds {
-  width: 100%;
-  line-height: 0;
-  -webkit-column-count: 4;
-  -webkit-column-gap:   0px;
-  -moz-column-count:    4;
-  -moz-column-gap:      0px;
-  column-count:         4;
-  column-gap:           0px;
+.dogs-enter-active, .dogs-leave-active {
+  transition: opacity 0.5s;
 }
-.doggy {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.doggy img {
-  display: block;
-  width: 100%;
-  height: auto;
+.dogs-enter, .dogs-leave-to {
+  opacity: 0;
 }
 </style>
